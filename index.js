@@ -1,3 +1,9 @@
+//import .env
+require('dotenv').config()
+
+//import connection
+require('./connection')
+
 // import express
 const express=require('express')
 
@@ -22,7 +28,7 @@ pfserver.use(express.json())
 pfserver.use(router)
 
 //port to run server
-const PORT=4040||process.env.PORT
+const PORT= 4040||process.env.PORT
 
 
 //listen
@@ -37,11 +43,11 @@ pfserver.listen(PORT,()=>{
 
 
 
-// //get
-// pfserver.get('/',(req, res)=>{
-//     res.send('get request recieved')
-//     res.send('end')
-// })
+//get
+pfserver.get('/',(req, res)=>{
+    res.send('get request recieved')
+    res.send('end')
+})
 
 // //send
 // pfserver.post('/',(req,res)=>{
