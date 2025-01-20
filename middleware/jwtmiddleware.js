@@ -1,8 +1,20 @@
+//import jwt
+const jwt=require('jsonwebtoken')
+
 const jwtmiddleware=(req,res,next)=>{
     console.log('inside jwt middleware');
-    const token=req.headers['authorization']
+    const token=req.headers['authorization'].split(" ")[1]
     console.log(token);
-    next()
+    try{
+        const jwtResponse=jwt.verify(token,"secretkey")
+        console.log(jwtResponse);
+        req.payload = jwtResponse.userId
+        next()
+        
+    }catch(error){
+        res.status(401).json('Authorisation failed due to',error)
+    }
+   
     
     
 }

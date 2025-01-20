@@ -24,6 +24,9 @@ pfserver.use(cors())
 //parse the data - returns middleware to pare the data
 pfserver.use(express.json())
 
+//imprt folder
+pfserver.use('/upload',express.static('./uploads'))
+
 //use 
 pfserver.use(router)
 
